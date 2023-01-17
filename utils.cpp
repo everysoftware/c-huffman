@@ -41,10 +41,6 @@ void GetTime(char* buffer) {
 		timeinfo.tm_sec);
 }
 
-/*
-Парсит базовое имя файла и его расширение из пути.
-Возвращает расширение, а имя заносит в буфер namebuf
-*/
 const char* ParsePath(const char* path, char* namebuf) {
 	const char* pext = strrchr(path, '.');
 	pext = pext == NULL ? "" : pext;
@@ -56,20 +52,13 @@ const char* ParsePath(const char* path, char* namebuf) {
 	return pext + 1;
 }
 
-/*
-Получить путь до сжатого файла в buffer, вернуть расширение исходного файла
-C:/.../file.ext -> compressed/file.huf
-*/
 const char* GetPathForCompressed(const char* path, char* buffer) {
 	char name[FILENAME_MAX] = "";
 	const char* ext = ParsePath(path, name);
 	sprintf_s(buffer, FILENAME_MAX, "%s/%s.%s", COMPRESSED_DIR, name, COMPRESSED_EXT);
 	return ext;
 }
-/*
-Получить путь до распакованного файла
-C:/.../file.huf -> decompressed/file.orig_ext
-*/
+
 bool GetPathForDecompressed(const char* path, const char* orig_ext, char* buffer) {
 	char name[FILENAME_MAX] = "";
 	const char* ext = ParsePath(path, name);
@@ -77,13 +66,10 @@ bool GetPathForDecompressed(const char* path, const char* orig_ext, char* buffer
 		return false;
 	}
 	sprintf_s(buffer, FILENAME_MAX, "%s/%s.%s", DECOMPRESSED_DIR, name, orig_ext);
-	return ext;
+	return true;
 }
 
 void PrintFreqTable(const FreqTable* freq) {
-	if (!DEBUG_MODE) {
-		return;
-	}
 	printf("Frequency table\n");
 	printf("%u total symbols\n", freq->total_symb);
 	printf("%u unique symbols\n", freq->unique_symb);
@@ -118,9 +104,6 @@ void DeleteCodingTable(char** table) {
 }
 
 void PrintCodingTable(const char * const * table) {
-	if (!DEBUG_MODE) {
-		return;
-	}
 	printf("Coding table\n");
 	for (size_t i = 0; i < ASCII_SIZE; ++i) {
 		if (table[i][0] != '\0') {

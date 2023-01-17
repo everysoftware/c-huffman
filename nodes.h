@@ -10,7 +10,7 @@ typedef struct Node
 {
 	unsigned char symb;
 	size_t freq;
-	unsigned char code[256];
+	unsigned char code[ASCII_SIZE];
 	bool is_symb;
 	struct Node* left;
 	struct Node* right;

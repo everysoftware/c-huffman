@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h> // rand
-#include <time.h> // time
+#include <stdlib.h>
+#include <time.h>
 #include <string.h>
 #include <math.h>
 #include <stdint.h>
@@ -8,8 +8,8 @@
 
 #include "tests.h"
 #include "utils.h"
+#include "nodes.h"
 
-#define ASCII_SIZE 256
 #define MB_SIZE 1048576
 
 void MakeASCIITest() {

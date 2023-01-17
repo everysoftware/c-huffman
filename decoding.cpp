@@ -10,7 +10,7 @@
 void ReadExt(FILE* fin, char buffer[FILENAME_MAX]) {
 	char c = fgetc(fin);
 	size_t i = 0;
-	while (c != '|') {
+	while (c != '|' && c != EOF && i < FILENAME_MAX - 1) {
 		buffer[i] = c;
 		c = fgetc(fin);
 		++i;
@@ -74,6 +74,7 @@ bool HuffmanDecompress(const char* path) {
 	if (fopen_s(&fin, path, "rb") != 0) {
 		return RaiseError("Could not open source file for reading");
 	}
+
 	printf("Read meta info...\n");
 	char ext[FILENAME_MAX] = { 0 };
 	ReadExt(fin, ext);
@@ -83,6 +84,7 @@ bool HuffmanDecompress(const char* path) {
 		return RaiseError("Incorrect file format");
 	}
 	printf("Decompressed file will be saved at : %s\n", orig_path);
+
 	if (fopen_s(&fout, orig_path, "wb") != 0) {
 		fclose(fin);
 		return RaiseError("Could not open destination file for writing");
@@ -92,6 +94,7 @@ bool HuffmanDecompress(const char* path) {
 	meta.freq = &freq;
 	ReadMeta(fin, &meta);
 	Node* tree = MakeCodingTable(&freq, NULL);
+
 	printf("Start decompressing...\n");
 	Stat stat = { 0 };
 	stat.original = GetSizeOfFile(path);
@@ -102,8 +105,9 @@ bool HuffmanDecompress(const char* path) {
 		printf("File saved at : %s\n", orig_path);
 	}
 	else {
-		printf("Decompression failed. Written %zu bytes while excepted %zu bytes\n", stat.written, stat.excepted);
+		printf("Decompression failed. Written %zuB while excepted %zuB\n", stat.written, stat.excepted);
 	}
+
 	DelTree(tree);
 	fclose(fin);
 	fclose(fout);

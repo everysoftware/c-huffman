@@ -1,14 +1,13 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#define DEBUG_MODE true
+#define DEBUG_MODE false
 
 #define SAMPLES_DIR "samples"
 #define COMPRESSED_DIR "compressed"
 #define DECOMPRESSED_DIR "decompressed"
 #define COMPRESSED_EXT "huf"
 #define TIME_BUFFER_SIZE 16
-#define ASCII_SIZE 256
 #define PROGRESS_STEP 5
 #define BYTE_SIZE 8 
 

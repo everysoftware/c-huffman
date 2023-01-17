@@ -80,8 +80,8 @@ bool EncodeAndWrite(FILE* fin, FILE* fout, const char * const * table, Stat* sta
 }
 
 void PrintCompressionStat(const Stat* stat) {
-	printf("- Original file : %zu bytes\n", stat->original);
-	printf("- Compressed file : %zu bytes\n", stat->excepted + stat->meta);
+	printf("- Original file : %zu B\n", stat->original);
+	printf("- Compressed file : %zu B\n", stat->excepted + stat->meta);
 	printf("- Compressed file = %.2Lf x Original file\n", ((long double)stat->excepted + stat->meta) / stat->original);
 }
 

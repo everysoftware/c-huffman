@@ -23,12 +23,12 @@ bool CompressMenu() {
 	system("cls");
 	printf("Menu -> Compress file\n");
 	char path[FILENAME_MAX] = { 0 };
-	printf("Enter the path to the file\n> ");
+	printf("Enter 'return' to return to the menu\n");
+	printf("The path to the file :\n> ");
 	gets_s(path, FILENAME_MAX);
 	while (!FileExists(path) && strcmp(path, "return") != 0) {
 		printf("[Error] No such file\n");
-		printf("%s\n", path);
-		printf("Enter the path to the file you want to compress :\n> ");
+		printf("The path to the file :\n> ");
 		gets_s(path, FILENAME_MAX);
 	}
 	if (strcmp(path, "return") == 0) {
@@ -48,12 +48,13 @@ bool CompressMenu() {
 bool DecompressMenu() {
 	system("cls");
 	printf("Menu -> Decompress file\n");
+	printf("Enter 'return' to return to the menu\n");
 	char path[FILENAME_MAX] = { 0 };
-	printf("Enter the path to the file\n> ");
+	printf("The path to the file :\n> ");
 	gets_s(path, FILENAME_MAX);
 	while (!FileExists(path) && strcmp(path, "return") != 0) {
 		printf("[Error] No such file\n");
-		printf("Enter the path to the file you want to decompress :\n> ");
+		printf("The path to the file :\n> ");
 		gets_s(path, FILENAME_MAX);
 	}
 	if (strcmp(path, "return") == 0) {
@@ -89,10 +90,10 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	Start();
 	if (_CrtDumpMemoryLeaks()) {
-		printf("Memory leak is detected");
+		printf("Memory leak is detected!");
 	}
 	else {
-		printf("Finished");
+		printf("Finished with success");
 	}
 	return 0;
 }
