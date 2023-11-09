@@ -1,9 +1,8 @@
 # C Huffman
 Простой архиватор, сжимающий файлы с помощью алгоритма Хаффмана.  
 
-![image](https://github.com/everysoftware/c-huffman/assets/22497421/143e0cc9-66aa-4f55-a322-bdfd4177b681)
-![image](https://github.com/everysoftware/c-huffman/assets/22497421/5eca3cb8-a4e9-4d0a-8f46-daa3c1fadf0d)
-
+![image](https://github.com/everysoftware/c-huffman/assets/22497421/973a710d-fd6e-46ed-a74d-3c7fcdbeb9c3)
+![image](https://github.com/everysoftware/c-huffman/assets/22497421/67fbd59e-560f-4f05-ab63-de9aa3123db9)
 
 ## Фичи
 * User-friendly UI
